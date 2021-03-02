@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * BV Ue2 SS2020 Vorgabe
+ *
+ * Copyright (C) 2017 by Klaus Jung
+ * All rights reserved.
+ * Date: 2017-07-15
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="800.0" maxWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bv_ws20.PerspectiveAppController">
+   <center>
+      <GridPane hgap="10.0" vgap="5.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="58.0" valignment="TOP" vgrow="NEVER" />
+         </rowConstraints>
+         <children>
+            <TitledPane collapsible="false" maxWidth="1.7976931348623157E308" text="Original Image">
+               <content>
+                  <ScrollPane pannable="true">
+                     <content>
+                        <ImageView fx:id="originalImageView" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                     </content>
+                  </ScrollPane>
+               </content>
+            </TitledPane>
+            <TitledPane collapsible="false" maxWidth="1.7976931348623157E308" text="Transformed Image" GridPane.columnIndex="1">
+               <content>
+                  <ScrollPane pannable="true">
+                     <content>
+                        <ImageView fx:id="transformedImageView" pickOnBounds="true" preserveRatio="true" smooth="false" />
+                     </content>
+                  </ScrollPane>
+               </content>
+            </TitledPane>
+            <VBox spacing="5.0" GridPane.rowIndex="1">
+               <children>
+                  <BorderPane>
+                     <left>
+                        <Button mnemonicParsing="false" onAction="#openImage" prefHeight="27.0" text="Open Image" BorderPane.alignment="CENTER" />
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" onAction="#speedTest" prefHeight="27.0" text="Speed Test" BorderPane.alignment="CENTER" />
+                     </right>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </BorderPane>
+               </children>
+            </VBox>
+            <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <HBox spacing="10.0">
+                     <children>
+                        <ComboBox fx:id="interpolationSelection" onAction="#interpolationChanged" />
+                        <Label fx:id="messageLabel" prefHeight="26.0" text="Message Label" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label prefHeight="27.0" text="Angle:">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Slider fx:id="angleSlider" blockIncrement="1.0" max="360.0" maxWidth="140.0" onKeyReleased="#angleChanged" onMouseClicked="#angleChanged" onMouseDragged="#angleChanged" prefHeight="27.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Slider>
+                        <Label fx:id="angleLabel" prefHeight="27.0" prefWidth="45.0" text="0°">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label prefHeight="27.0" text="Distortion:">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Slider fx:id="distortionSlider" blockIncrement="1.0E-4" max="0.002" maxWidth="140.0" min="0.001" onKeyReleased="#distortionChanged" onMouseClicked="#distortionChanged" onMouseDragged="#distortionChanged" prefHeight="27.0" value="0.001">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Slider>
+                        <Label fx:id="distortionLabel" minWidth="48.0" prefHeight="27.0" text="0.0010">
+                           <HBox.margin>
+                              <Insets left="-6.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </padding>
+      </GridPane>
+   </center>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</BorderPane>
